@@ -1,0 +1,91 @@
+<!doctype html>
+<!--[if IE 7 ]>		 <html class="no-js ie ie7 lte7 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>		 <html class="no-js ie ie8 lte8 lte9" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>		 <html class="no-js ie ie9 lte9>" lang="en-US"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+	<title>Büyük / Küçük</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="ilhan er">
+	<meta name="description" content="Büyük / Küçük">
+	<meta name="viewport" content="width=device-width">
+	<meta name="generator" content="ilhan er" />
+	
+
+	<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() 
+		{
+			$("#TitleCase").click(function()
+			{
+				var data = $("#giris").val();
+				data = toTitleCase(data); 
+				data = $.trim(data);
+				$("#giris").val(data);
+			}); 
+
+			$("#UpperCase").click(function()
+			{
+				var data = $("#giris").val();
+				data = toUpperCase(data); 
+				data = $.trim(data);
+				$("#giris").val(data);
+			}); 
+
+			$("#LowerCase").click(function()
+			{
+				var data = $("#giris").val();
+				data = toLowerCase(data);
+				data = $.trim(data); 
+				$("#giris").val(data);
+			}); 
+
+			$("#LineStart").click(function()
+			{
+				var data="";
+				var arrayOfLines = $('#giris').val().split('\n');
+				var ddd = prompt("Başına eklenecek yazı", "");
+				if (ddd != null) 
+				{
+					for (let index = 0; index < arrayOfLines.length; ++index) 
+						{
+						data = data + ddd + arrayOfLines[index] + "\n";
+						}
+					$("#giris").val(data);
+				}	
+			}); 
+
+			$("#LineEnd").click(function()
+			{
+				var data="";
+				var arrayOfLines = $('#giris').val().split('\n');
+				var ddd = prompt("Sonuna eklenecek yazı", "");
+				if (ddd != null) 
+				{
+					for (let index = 0; index < arrayOfLines.length; ++index) 
+						{
+						data = data + arrayOfLines[index] + ddd + "\n";
+						}
+					$("#giris").val(data);
+				}	
+			});
+			
+			
+		});
+					
+	</script>
+</head>
+<body>
+<form>
+	<textarea id="giris" rows="7" cols="50"></textarea>
+	<br/>&nbsp;<br/><input type="button" id="TitleCase" value="Yazıyı Düzelt" />&nbsp;&nbsp;
+		<input type="button" id="UpperCase" value="BÜYÜK HARF" />&nbsp;&nbsp;
+		<input type="button" id="LowerCase" value="küçük harf" />&nbsp;&nbsp;
+	<br/>&nbsp;<br/><input type="button" id="LineStart" value="Satırın Başına Ekle" />&nbsp;&nbsp;
+		<input type="button" id="LineEnd" value="Satırın Sonuna Ekle" />&nbsp;&nbsp;
+</form>
+</body>
+</html>
